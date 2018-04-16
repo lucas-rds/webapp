@@ -1,0 +1,21 @@
+version: '3'
+services:
+  webapp:
+    depends_on:
+      - "db"
+    links:
+      - "db"
+    build: 
+      context: ../
+      dockerfile: 'Dockerfile'
+    ports:
+      - '80:80'
+    restart: always
+  db:
+    image: "postgres:9.4"
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: 'webapp'
+      POSTGRES_PASSWORD: 'adm123'
