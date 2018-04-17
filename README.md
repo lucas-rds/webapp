@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/lucas-rds/webapp.svg?branch=master)](https://travis-ci.org/lucas-rds/webapp)
 # PUBG Death Analysis Statistic
 
 ## What is this?
