@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 8.9.1
+cache:
+  directories:
+    - "node_modules"
+deploy:
+  provider: heroku
+  strategy: git
+  app: radiant-oasis-74331
+  api_key:
+    secure: SS9f/GchwU8tDuWwvv9PAV3YX/yPK9TmAKgJ7NS2qRUdRVMHOYVfj2NnmJyC7UPLdMD+qZbnZjp4EaSdbYvdPVgu/2MWj1GDIEw9ZgiFZputLrhU++HHEulBk86jCebvxOVcy3i929a+PzautWxsRYv3Ej1BAxsQ2EknrThchP568z7ZlEKGepfYSJcUGnuIsVoSP+DjNhBgZA7ccIo237L2l7g5EzqxbIKlflmi3t+gmaiuAa//eaWVwYENagT8/A0LYC+4E4FJVj9AV1TqljrkJ8KiAg+NHsvF9425lAvUFTAgZsYORI5/ycHF4nyr7DG7eNARYbg7O5Pekcdp2uY1zdED9D7JImN8jSjEWCNsB3qlHI44a63/oBD0ZTngP3fc7ONzszNyO63420U5wJT8lVlP2oMDRo0QpNjPGEGF+Z4amXKDR0jKhEtsJ0BrnoR0+jSF6iV4if8OupjIOdayFYJ4VApgm7T0XIZBxhP9G+TMRFZHZmZNSnev2lUrzy4yvOMMxOVo9UKDuy4THXzk6YNh1DwSUtO0QN+f03Hg7q6vSMNAhRA2s9W79ybsrccdveTJ9UMcmAn+FRv5wfwGcycrCtyAXkQCHugRr5F9qBvvPr8GPI4VzwP4uUKiETiPt7df4LAGZBDRF9r3oDaLML3beaGg1xeIn52JGoM=
+  on:
+    repo: lucas-rds/webapp
+    all_branches: true
