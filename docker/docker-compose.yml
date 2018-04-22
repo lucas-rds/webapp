@@ -12,10 +12,9 @@ services:
       - '80:80'
     restart: always
   db:
-    image: "postgres:9.4"
-    restart: always
+    build: 
+      context: ./database/
+      dockerfile: 'Dockerfile'
+    restart: "always"
     ports:
       - '5432:5432'
-    environment:
-      POSTGRES_USER: 'webapp'
-      POSTGRES_PASSWORD: 'adm123'
