@@ -1,20 +1,30 @@
 import chai, { expect, should } from 'chai';
-import { Death } from '../../server/database/models';
+import { Death, Player } from '../../server/database/models';
 
 describe('Database', () => {
 	const killerName = "MARIADOGAME";
 	let death;
-
-	before(async () => {
-		death = await Death.create({ killerName });
-	})
+	let killer;
 
 	after(async () => {
-		death.destroy();
+		// death.destroy();
+		killer.destroy();
 	})
 
-	it('Should register deaths', async () => {
-		const filtered = await Death.findOne({ where: { killerName } });
-		await expect(filtered.killerName).to.equal(killerName);
+	it('Should register Players', async () => {
+		killer = await Player.create({ name: killerName });
+		expect(killer.id).to.greaterThan(0);
+		expect(killer).to.not.eq(undefined);
+		expect(killer).to.not.eq(null);
+	})
+
+	it('Should register Deaths', async () => {
+		console.log("FOREIGN>:", killer.id);
+		
+		death = await Death.create({ killer: killer.id, killerId: killer.id });
+		// const queriedDeath = await Death.findOne({ where: { killer }, include: ['killer'] });
+		// console.log(queriedDeath);
+		// expect(queriedDeath).to.not.eq(undefined);
+		// expect(queriedDeath).to.not.eq(null);
 	})
 })

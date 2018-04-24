@@ -8,12 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      killedBy: {
-        type: Sequelize.STRING
-      },
-      killerName: {
-        type: Sequelize.STRING
-      },
       killerPlacement: {
         type: Sequelize.FLOAT
       },
@@ -32,9 +26,6 @@ module.exports = {
       time: {
         type: Sequelize.TIME
       },
-      victimName: {
-        type: Sequelize.STRING
-      },
       victimPlacement: {
         type: Sequelize.FLOAT
       },
@@ -51,6 +42,20 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      killerId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Players',
+          key: 'id'
+        }
+      },
+      victimId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Players',
+          key: 'id'
+        }
       }
     });
   },

@@ -10,9 +10,10 @@
     "deploy": "node dist/server.js",
     "serve": "npm run build && npm run deploy",
     "test": "npx mocha --require babel-core/register --require babel-polyfill --exit ./test/**.test.js",
-    "test:database": "npm run migrations && npx mocha --require babel-core/register --require babel-polyfill --exit ./test/database/**.test.db.js",
+    "test:database": "npm run migrate && npx mocha --require babel-core/register --require babel-polyfill --exit ./test/database/**.test.db.js",
     "createdb": "npx sequelize db:create",
-    "migrations": "npx sequelize db:migrate"
+    "migrate": "npx sequelize db:migrate",
+    "migrate:revert": "npx sequelize db:migrate:undo"
   },
   "license": "ISC",
   "homepage": "https://github.com/lucas-rds/webapp#readme",
