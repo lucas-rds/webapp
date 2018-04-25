@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Player = sequelize.define('Player', {
+  let Player = sequelize.define('Player', {
     name: DataTypes.STRING
-  }, {});
+  });
 
   Player.associate = function(models) {
     // associations can be defined here

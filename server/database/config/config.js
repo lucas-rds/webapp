@@ -10,9 +10,9 @@ module.exports = {
     "operatorsAliases": Sequelize.Op
   },
   "test": {
-    "username": "webapp",
-    "password": "adm123",
-    "database": "webapp",
+    "username": "webapp_test",
+    "password": "webapp_test",
+    "database": "webapp_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": Sequelize.Op

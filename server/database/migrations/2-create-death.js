@@ -48,14 +48,18 @@ module.exports = {
         references: {
           model: 'Players',
           key: 'id'
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       },
       victimId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Players',
           key: 'id'
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       }
     });
   },

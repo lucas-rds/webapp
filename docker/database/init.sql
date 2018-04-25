@@ -1,3 +1,7 @@
 CREATE USER webapp WITH PASSWORD 'adm123';
 CREATE DATABASE webapp;
 GRANT ALL PRIVILEGES ON DATABASE webapp TO webapp;
+
+CREATE USER webapp_test WITH PASSWORD 'webapp_test';
+CREATE DATABASE webapp_test;
+GRANT ALL PRIVILEGES ON DATABASE webapp_test TO webapp_test;

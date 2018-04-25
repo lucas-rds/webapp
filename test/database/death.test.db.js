@@ -1,30 +1,45 @@
 import chai, { expect, should } from 'chai';
 import { Death, Player } from '../../server/database/models';
 
-describe('Database', () => {
+describe('Database', function () {
+	this.timeout(10000);
 	const killerName = "MARIADOGAME";
+	const victimName = "JOAODOGAME";
 	let death;
 	let killer;
+	let victim;
 
-	after(async () => {
-		// death.destroy();
-		killer.destroy();
+	after((done) => {
+		killer.destroy()
+			.then(() => victim.destroy())
+			.then(() => death.destroy())
+			.then(() => done());
 	})
 
 	it('Should register Players', async () => {
+		let playerExpectations = (player) => {
+			expect(player.id).to.greaterThan(0);
+			expect(player).to.not.eq(undefined);
+			expect(player).to.not.eq(null);
+		}
+
 		killer = await Player.create({ name: killerName });
-		expect(killer.id).to.greaterThan(0);
-		expect(killer).to.not.eq(undefined);
-		expect(killer).to.not.eq(null);
+		victim = await Player.create({ name: victimName });
+		playerExpectations(killer);
+		playerExpectations(victim);
 	})
 
 	it('Should register Deaths', async () => {
-		console.log("FOREIGN>:", killer.id);
-		
-		death = await Death.create({ killer: killer.id, killerId: killer.id });
-		// const queriedDeath = await Death.findOne({ where: { killer }, include: ['killer'] });
-		// console.log(queriedDeath);
-		// expect(queriedDeath).to.not.eq(undefined);
-		// expect(queriedDeath).to.not.eq(null);
+		death = await Death.create({
+			killerId: killer.id,
+			victimId: victim.id
+		});
+		const queriedDeath = await Death.findOne({
+			where: { id: death.id },
+			include: ['killer', 'victim']
+		});
+		expect(queriedDeath).to.not.eq(undefined);
+		expect(queriedDeath.killer.id).to.eq(killer.id);
+		expect(queriedDeath.victim.id).to.eq(victim.id);
 	})
 })

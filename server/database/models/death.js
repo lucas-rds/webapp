@@ -9,12 +9,14 @@ module.exports = (sequelize, DataTypes) => {
     time: DataTypes.TIME,
     victimPlacement: DataTypes.FLOAT,
     victimPositionX: DataTypes.FLOAT,
-    victimPositionY: DataTypes.FLOAT
-  }, {});
+    victimPositionY: DataTypes.FLOAT,
+    killerId: DataTypes.INTEGER,
+    victimId: DataTypes.INTEGER
+  });
 
   Death.associate = function (models) {
-    Death.hasOne(models.Player, { as: 'killer', foreignKey: 'killerId' });
-    Death.hasOne(models.Player, { as: 'victim', foreignKey: 'victimId' });
+    Death.belongsTo(models.Player, { as: 'killer', foreignKey: 'killerId' });
+    Death.belongsTo(models.Player, { as: 'victim', foreignKey: 'victimId' });
   };
 
   return Death;
