@@ -14,7 +14,7 @@
     "test:database:exec": "npx mocha --require babel-core/register --require babel-polyfill --exit ./test/database/**.test.db.js",
     "createdb": "npx sequelize db:create",
     "migrate": "npx sequelize db:migrate",
-    "migrate:revert": "npx sequelize db:migrate:undo"
+    "migrate:revert": "npx sequelize db:migrate:undo:all"
   },
   "license": "ISC",
   "homepage": "https://github.com/lucas-rds/webapp#readme",
