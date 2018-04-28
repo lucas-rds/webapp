@@ -9,6 +9,12 @@ describe('Database', function () {
 	let killer;
 	let victim;
 
+	const savedModelExpectations = (model) => {
+		expect(model.id).to.greaterThan(0);
+		expect(model).to.not.eq(undefined);
+		expect(model).to.not.eq(null);
+	}
+
 	after((done) => {
 		killer.destroy()
 			.then(() => victim.destroy())
@@ -17,16 +23,10 @@ describe('Database', function () {
 	})
 
 	it('Should register Players', async () => {
-		let playerExpectations = (player) => {
-			expect(player.id).to.greaterThan(0);
-			expect(player).to.not.eq(undefined);
-			expect(player).to.not.eq(null);
-		}
-
 		killer = await Player.create({ name: killerName });
 		victim = await Player.create({ name: victimName });
-		playerExpectations(killer);
-		playerExpectations(victim);
+		savedModelExpectations(killer);
+		savedModelExpectations(victim);
 	})
 
 	it('Should register Deaths', async () => {
