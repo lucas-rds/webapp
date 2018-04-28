@@ -8,15 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      killerPlacement: {
-        type: Sequelize.FLOAT
-      },
-      killerPositionX: {
-        type: Sequelize.FLOAT
-      },
-      killerPositionY: {
-        type: Sequelize.FLOAT
-      },
       map: {
         type: Sequelize.STRING
       },
@@ -25,6 +16,15 @@ module.exports = {
       },
       time: {
         type: Sequelize.TIME
+      },
+      killerPlacement: {
+        type: Sequelize.FLOAT
+      },
+      killerPositionX: {
+        type: Sequelize.FLOAT
+      },
+      killerPositionY: {
+        type: Sequelize.FLOAT
       },
       victimPlacement: {
         type: Sequelize.FLOAT

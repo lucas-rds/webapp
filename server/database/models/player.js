@@ -4,9 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   });
 
-  Player.associate = function(models) {
-    // associations can be defined here
-  };
+  Player.associate = function(models) {};
 
   return Player;
 };

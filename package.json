@@ -11,7 +11,7 @@
     "serve": "npm run build && npm run deploy",
     "test": "npx mocha --require babel-core/register --require babel-polyfill --exit ./test/**.test.js",
     "test:database": "set NODE_ENV=test&& npm run migrate && npm run test:database:exec && npm run migrate:revert",
-    "test:database:exec": "npx mocha --require babel-core/register --require babel-polyfill --exit ./test/database/**.test.db.js",
+    "test:database:exec": "npx mocha --require babel-core/register --require babel-polyfill --exit ./test/database/**.test.db.js --bail",
     "createdb": "npx sequelize db:create",
     "migrate": "npx sequelize db:migrate",
     "migrate:revert": "npx sequelize db:migrate:undo:all"
