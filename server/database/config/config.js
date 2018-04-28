@@ -23,7 +23,9 @@ module.exports = {
     "protocol": "postgres",
     "operatorsAliases": Sequelize.Op,
     "dialectOptions": {
-      "ssl": true
+      "ssl": {
+        "require": true
+      }
     }
   }
 }

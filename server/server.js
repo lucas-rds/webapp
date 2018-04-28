@@ -18,4 +18,4 @@ server.get('/deaths', (req, res) => {
 models.sequelize.sync().then(() => {
     server.listen(PORT);
     console.log(`Listening server in port: ${PORT}`);
-});
+}).catch(err => console.log(err));
