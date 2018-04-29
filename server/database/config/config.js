@@ -22,6 +22,11 @@ module.exports = {
     "dialect": "postgres",
     "protocol": "postgres",
     "operatorsAliases": Sequelize.Op,
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 10000
+    },
     "dialectOptions": {
       "ssl": {
         "require": true
