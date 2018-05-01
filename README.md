@@ -5,6 +5,8 @@
 This little guy , when have been finished, will show us all data related to deaths and players for PUBG in a very friendly-like page.  
 We will use a startup database that we found on [Kaggle](https://www.kaggle.com/skihikingkevin/pubg-match-deaths), after this we will create a "Web scrapping" to get new informations from the PUBG site (maybe in other repository).
 
+The front end is hosted here -> https://github.com/JuniorDiasOliveira/webapp-front
+
 ## Technologies 
 We will use the following technologies:  
 ### **Front End:**
