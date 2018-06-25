@@ -1,21 +1,28 @@
 import express from 'express';
-import models from './database/models';
+import { Death } from './database/models';
+import graphqlHttp from './graphs/http';
 
 const PORT = process.env.PORT || 80;
-const server = express();
+const app = express();
 
-server.use(express.static('public'));
-server.get('/deaths', (req, res) => {
-    models.Death.findAll()
-        .then(deaths => res.send(deaths))
+app.use(express.static('public'));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next()
+})
+
+app.get('/deaths', (req, res) => {
+    Death.findAll()
+        .then(data => res.send(data))
         .catch(err => {
             res.status(400);
             res.send(err);
             console.log(err)
         });
-})
+});
 
-models.sequelize.sync().then(() => {
-    server.listen(PORT);
-    console.log(`Listening server in port: ${PORT}`);
-}).catch(err => console.log(err));
+app.use('/graph', graphqlHttp);
+
+export default app;

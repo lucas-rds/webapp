@@ -4,10 +4,10 @@
   "description": "Project for learning purposes",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node server/server.js",
-    "start:livereload": "nodemon server/server.js --exec babel-node",
+    "start": "babel-node server/index.js",
+    "start:livereload": "nodemon server/index.js --exec babel-node",
     "build": "babel server -d dist",
-    "deploy": "node dist/server.js",
+    "deploy": "node dist/index.js",
     "serve": "npm run build && npm run deploy",
     "test": "npx mocha --require babel-core/register --require babel-polyfill --exit ./test/**.test.js",
     "test:database": "set NODE_ENV=test&& npm run migrate && npm run test:database:exec && npm run migrate:revert",
@@ -40,6 +40,8 @@
   "dependencies": {
     "chai": "^4.1.2",
     "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "forest-express-sequelize": "^2.8.4",
     "graphql": "^0.13.2",
     "mocha": "^5.1.0",
     "pg": "^7.4.1",
