@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 
 module.exports = {
   "development": {
-    "username": "webapp",
+    "username": "postgres",
     "password": "adm123",
     "database": "webapp",
     "host": "127.0.0.1",
@@ -18,11 +18,19 @@ module.exports = {
     "operatorsAliases": Sequelize.Op
   },
   "production": {
-    "username": "webapp",
-    "password": "adm123",
-    "database": "webapp",
-    "host": "127.0.0.1",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
-    "operatorsAliases": Sequelize.Op
+    "protocol": "postgres",
+    "operatorsAliases": Sequelize.Op,
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 10000
+    },
+    "dialectOptions": {
+      "ssl": {
+        "require": true
+      }
+    }
   }
 }
